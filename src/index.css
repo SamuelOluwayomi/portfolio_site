@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-mauve: #7F727A;
+  --color-brand-purple: #8B7DD8;
+  --color-brand-blue: #A8C5DD;
+  --color-brand-light-blue: #E5CEDC;
+}
+
+/* Enhanced floating sparkle animation */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-15px) translateX(8px) scale(1.2);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-25px) translateX(15px) scale(1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-15px) translateX(8px) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-root {
+  position: relative;
+  z-index: 20; /* ensure this is higher than the glow band (zIndex:15) and page background */
+}
