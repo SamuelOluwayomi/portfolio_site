@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
