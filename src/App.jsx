@@ -1,4 +1,4 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { useEffect } from 'react';
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-brand-mauve">
+      <SpeedInsights/>
       <Navbar />
       <Hero />
       <About />
