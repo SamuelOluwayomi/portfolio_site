@@ -141,17 +141,6 @@ const Navbar = () => {
               }}
             >
               <motion.a 
-                href="#blog"
-                onClick={(e) => { e.preventDefault(); handleScroll('blog'); }}
-                className="text-white/90 hover:text-white transition-colors duration-200 py-2 text-sm"
-                variants={{
-                  open: { opacity: 1, x: 0 },
-                  closed: { opacity: 0, x: -20 }
-                }}
-              >
-                Why us
-              </motion.a>
-              <motion.a 
                 href="#about"
                 onClick={(e) => { e.preventDefault(); handleScroll('about'); }}
                 className="text-white/90 hover:text-white transition-colors duration-200 py-2 text-sm"
@@ -161,6 +150,17 @@ const Navbar = () => {
                 }}
               >
                 About us
+              </motion.a>
+              <motion.a 
+                href="#why us"
+                onClick={(e) => { e.preventDefault(); handleScroll('blog'); }}
+                className="text-white/90 hover:text-white transition-colors duration-200 py-2 text-sm"
+                variants={{
+                  open: { opacity: 1, x: 0 },
+                  closed: { opacity: 0, x: -20 }
+                }}
+              >
+                Why us
               </motion.a>
               <motion.a 
                 href="#projects"
