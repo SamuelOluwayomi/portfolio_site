@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { useEffect } from 'react';
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
