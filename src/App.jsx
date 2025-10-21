@@ -7,7 +7,7 @@ import { Loader } from "lucide-react";
 
 const Hero = lazy(() => import('./components/Hero'));
 const About = lazy(() => import('./components/About'));
-const Whyme = lazy(() => import('./components/WhyMe'));
+const Whyme = lazy(() => import('./components/Whyme'));
 
 function App() {
   useEffect(() => {
