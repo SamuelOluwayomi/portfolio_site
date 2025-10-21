@@ -9,22 +9,25 @@
 }
 
 /* Enhanced floating sparkle animation */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) translateX(0px) scale(1);
+ @keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
     opacity: 0.6;
   }
-  25% {
-    transform: translateY(-15px) translateX(8px) scale(1.2);
+  50% {
+    transform: translateY(-20px) translateX(10px);
     opacity: 1;
   }
-  50% { 
-    transform: translateY(-25px) translateX(15px) scale(1);
-    opacity: 0.8;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
   }
-  75% {
-    transform: translateY(-15px) translateX(8px) scale(1.1);
-    opacity: 0.9;
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
   }
 }
 
@@ -35,4 +38,23 @@
 .hero-root {
   position: relative;
   z-index: 20; /* ensure this is higher than the glow band (zIndex:15) and page background */
+}
+
+/* Enable GPU acceleration globally */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize transforms */
+.hero-root,
+[class*="motion"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce paint complexity */
+img {
+  image-rendering: -webkit-optimize-contrast;
 }

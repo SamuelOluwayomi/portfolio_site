@@ -1,22 +1,21 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 import meImage from "../assets/me.svg";
 import coding from "../assets/coding.svg";
 
 const About = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax effects
-  const imageY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const imageRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 5]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  // Memoize particles to prevent recalculation
+  const particles = useMemo(() => 
+    [...Array(4)].map((_, i) => ({
+      top: `${20 + i * 20}%`,
+      left: `${20 + i * 15}%`,
+      delay: i * 0.4,
+      duration: 3 + i,
+    })), []
+  );
 
   return (
-    <section ref={containerRef} id="about" className="relative bg-black text-white py-20 px-6 md:px-16 -mt-[150px] pt-[180px] overflow-hidden">
+    <section id="about" className="relative bg-black text-white py-20 px-6 md:px-16 -mt-[150px] pt-[180px] overflow-hidden">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -25,30 +24,21 @@ const About = () => {
         }} />
       </div>
 
-      {/* Floating Accent Elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-32 h-32 bg-brand-purple/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
+      {/* Floating Accent Elements - OPTIMIZED with CSS animations */}
+      <div
+        className="absolute top-20 left-10 w-32 h-32 bg-brand-purple/10 rounded-full"
+        style={{
+          filter: 'blur(60px)',
+          animation: 'pulse-slow 4s ease-in-out infinite',
+          willChange: 'transform, opacity',
         }}
       />
-      <motion.div
-        className="absolute bottom-20 right-10 w-40 h-40 bg-brand-blue/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
+      <div
+        className="absolute bottom-20 right-10 w-40 h-40 bg-brand-blue/10 rounded-full"
+        style={{
+          filter: 'blur(60px)',
+          animation: 'pulse-slow 5s ease-in-out infinite 1s',
+          willChange: 'transform, opacity',
         }}
       />
 
@@ -57,7 +47,7 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -73,11 +63,11 @@ const About = () => {
         {/* Content Grid */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           
-          {/* Left Side - Team Illustration Placeholder */}
+          {/* Left Side - Team Illustration */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
@@ -86,16 +76,18 @@ const About = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
               className="relative aspect-square bg-gradient-to-br from-brand-purple/20 to-brand-blue/20 rounded-3xl overflow-hidden border border-brand-purple/30 shadow-2xl"
+              style={{ willChange: 'transform' }}
             >
               <img 
                 src={coding} 
                 alt="Team collaboration" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
 
               {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-20 h-20 bg-brand-purple/20 rounded-full blur-xl" />
-              <div className="absolute bottom-4 left-4 w-24 h-24 bg-brand-blue/20 rounded-full blur-xl" />
+              <div className="absolute top-4 right-4 w-20 h-20 bg-brand-purple/20 rounded-full" style={{ filter: 'blur(40px)' }} />
+              <div className="absolute bottom-4 left-4 w-24 h-24 bg-brand-blue/20 rounded-full" style={{ filter: 'blur(40px)' }} />
             </motion.div>
 
             {/* Floating Badge */}
@@ -117,7 +109,7 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
@@ -160,6 +152,7 @@ const About = () => {
                     transition: { duration: 0.2 }
                   }}
                   className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-brand-purple/50 transition-all"
+                  style={{ willChange: 'transform' }}
                 >
                   <span className="text-3xl">{item.icon}</span>
                   <div>
@@ -175,121 +168,138 @@ const About = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="mt-8 px-8 py-3 bg-gradient-to-r from-brand-purple to-brand-blue text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transition-shadow"
+              style={{ willChange: 'transform' }}
             >
               Learn More About Us
             </motion.button>
           </motion.div>
         </div>
 
-        {/* 3D Floating Photo Card with Parallax */}
+        {/* 3D Floating Photo Card - OPTIMIZED */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-32 flex justify-center"
         >
-          <motion.div
-            style={{
-              y: imageY,
-              rotateX: imageRotate,
-              scale: imageScale,
-            }}
-            className="relative perspective-1000"
-          >
-            {/* Glowing Border Animation */}
-            <motion.div
-              animate={{
-                boxShadow: [
-                  "0 0 30px rgba(139, 125, 216, 0.4)",
-                  "0 0 50px rgba(139, 125, 216, 0.6)",
-                  "0 0 30px rgba(139, 125, 216, 0.4)",
-                ]
+          <motion.div className="relative perspective-1000">
+            {/* Subtle Glow Border - OPTIMIZED with CSS animation */}
+            <div
+              className="absolute -inset-[2px] bg-gradient-to-r from-brand-purple via-brand-blue to-brand-purple rounded-3xl opacity-70"
+              style={{
+                filter: 'blur(8px)',
+                animation: 'glow-pulse 4s ease-in-out infinite',
+                willChange: 'opacity',
               }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute -inset-1 bg-gradient-to-r from-brand-purple via-brand-blue to-brand-purple rounded-3xl blur-lg opacity-75"
             />
 
             {/* Photo Card */}
             <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-                rotateX: 5,
-                transition: { duration: 0.3 }
+              whileHover={{
+                scale: 1.03,
+                rotateY: 4,
+                rotateX: 4,
               }}
-              className="relative bg-gradient-to-br from-gray-900 to-black p-4 md:p-6 rounded-3xl shadow-2xl"
+              transition={{ duration: 0.3 }}
+              className="relative bg-gradient-to-br from-gray-900 to-black p-4 md:p-6 rounded-3xl shadow-xl"
               style={{
                 transformStyle: "preserve-3d",
+                willChange: 'transform',
               }}
             >
-              {/* Photo Container */}
+              {/* Image */}
               <div className="relative overflow-hidden rounded-2xl">
                 <motion.img
                   src={meImage}
                   alt="Sam - Web Developer"
                   className="w-full h-auto max-w-md mx-auto rounded-2xl"
-                  whileHover={{ scale: 1.1 }}
+                  loading="lazy"
+                  whileHover={{ scale: 1.06 }}
                   transition={{ duration: 0.4 }}
+                  style={{ willChange: 'transform' }}
                 />
-                
-                {/* Gradient Overlay on Hover */}
+                {/* Gradient Overlay */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-gradient-to-t from-brand-purple/50 to-transparent rounded-2xl"
+                  className="absolute inset-0 bg-gradient-to-t from-brand-purple/40 to-transparent rounded-2xl transition-opacity"
                 />
               </div>
 
               {/* Caption */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.4 }}
                 className="mt-4 text-center"
               >
                 <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
                   Samuel Oluwayomi
                 </h3>
-                <p className="text-gray-400 text-sm md:text-base">Full-Stack Developer & Designer</p>
+                <p className="text-gray-400 text-sm md:text-base">
+                  Full-Stack Developer & Designer
+                </p>
               </motion.div>
 
-              {/* Decorative Corner Elements */}
+              {/* Decorative Corners */}
               <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 border-brand-purple rounded-tl-xl" />
               <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-brand-blue rounded-tr-xl" />
               <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 border-brand-blue rounded-bl-xl" />
               <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 border-brand-purple rounded-br-xl" />
             </motion.div>
 
-            {/* Floating Particles around Photo */}
-            {[...Array(6)].map((_, i) => (
-              <motion.div
+            {/* Floating Particles - OPTIMIZED with CSS */}
+            {particles.map((particle, i) => (
+              <div
                 key={i}
                 className="absolute w-2 h-2 bg-brand-purple rounded-full"
                 style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 1, 0.3],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: i * 0.2,
+                  top: particle.top,
+                  left: particle.left,
+                  animation: `float-particle ${particle.duration}s ease-in-out infinite ${particle.delay}s`,
+                  willChange: 'transform, opacity',
                 }}
               />
             ))}
           </motion.div>
         </motion.div>
       </div>
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes pulse-slow {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.5;
+          }
+        }
+
+        @keyframes glow-pulse {
+          0%, 100% {
+            opacity: 0.4;
+          }
+          50% {
+            opacity: 0.7;
+          }
+        }
+
+        @keyframes float-particle {
+          0%, 100% {
+            transform: translateY(0) scale(1);
+            opacity: 0.4;
+          }
+          50% {
+            transform: translateY(-15px) scale(1.3);
+            opacity: 0.9;
+          }
+        }
+      `}</style>
     </section>
   );
 };

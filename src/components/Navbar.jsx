@@ -47,14 +47,14 @@ const Navbar = () => {
               onClick={(e) => { e.preventDefault(); handleScroll('about'); }}
               className="text-white/90 hover:text-white transition-colors duration-200 hover:scale-105 text-sm"
             >
-              About us
+              About me
             </a>
             <a
-              href="#blog"
-              onClick={(e) => { e.preventDefault(); handleScroll('blog'); }}
+              href="#why me"
+              onClick={(e) => { e.preventDefault(); handleScroll('why me'); }}
               className="text-white/90 hover:text-white transition-colors duration-200 hover:scale-105 text-sm"
             >
-              Why us
+              Why me
             </a>
             <a
               href="#projects"
