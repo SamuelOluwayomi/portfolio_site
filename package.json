@@ -15,7 +15,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.23.24",
     "imagemin": "^9.0.1",
-    "imagemin-webp": "^8.0.0",
+    "imagemin-webp": "^4.1.0",
     "lucide-react": "^0.545.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
