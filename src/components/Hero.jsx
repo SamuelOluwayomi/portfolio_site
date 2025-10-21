@@ -44,7 +44,7 @@ const Hero = () => {
 
   return (
     <div className="relative">
-      <section className="min-h-screen bg-gradient-to-b from-[#0F0F23] via-[#1A1A35] to-[#0A0A14] pt-30 pb-32 px-6 relative rounded-b-[100px] md:rounded-b-[150px] z-10 shadow-[0_40px_80px_-20px_rgba(139,125,216,0.6)] overflow-hidden hero-root">
+      <section className="min-h-screen bg-linear-to-b from-[#0F0F23] via-[#1A1A35] to-[#0A0A14] pt-30 pb-32 px-6 relative rounded-b-[100px] md:rounded-b-[150px] z-10 shadow-[0_40px_80px_-20px_rgba(139,125,216,0.6)] overflow-hidden hero-root">
         {/* Animated gradient mesh background */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0" style={{
@@ -133,7 +133,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-linear-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full backdrop-blur-sm"
             >
               <Sparkles className="w-4 h-4 text-purple-400" />
               <span className="text-sm text-purple-300 font-medium">Building Digital Excellence</span>
@@ -161,7 +161,7 @@ const Hero = () => {
               <br className="hidden md:block" />
               <motion.span 
                 variants={wordVariants} 
-                className="inline-block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
+                className="inline-block bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
               >
                 business
               </motion.span>
@@ -189,8 +189,8 @@ const Hero = () => {
                 className="relative px-8 py-4 rounded-full text-base md:text-lg font-semibold overflow-hidden group"
                 style={{ willChange: 'transform' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500" />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-r from-purple-600 via-pink-500 to-blue-500" />
+                <div className="absolute inset-0 bg-linear-to-r from-purple-500 via-pink-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10 flex items-center gap-2 text-white">
                   Book a call
                   <motion.span
@@ -265,7 +265,7 @@ const Hero = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className={`px-5 py-2.5 rounded-full bg-gradient-to-r ${item.color} text-white font-semibold text-sm shadow-lg cursor-pointer`}
+                    className={`px-5 py-2.5 rounded-full bg-linear-to-r ${item.color} text-white font-semibold text-sm shadow-lg cursor-pointer`}
                     style={{ willChange: 'transform' }}
                   >
                     {item.text}
@@ -306,7 +306,7 @@ const Hero = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
               whileHover={{ scale: 1.02 }}
-              className="md:w-1/3 w-full bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-sm border-2 border-purple-500/30 shadow-xl rounded-2xl p-6 transition-all"
+              className="md:w-1/3 w-full bg-linear-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-sm border-2 border-purple-500/30 shadow-xl rounded-2xl p-6 transition-all"
               style={{ willChange: 'transform' }}
             >
               <h3 className="text-xl font-bold mb-4 text-purple-300" style={{ fontFamily: "'Righteous', cursive" }}>
@@ -329,7 +329,7 @@ const Hero = () => {
                     className="flex items-center gap-3 text-gray-200"
                     style={{ willChange: 'transform' }}
                   >
-                    <item.icon className="text-purple-400 w-5 h-5 flex-shrink-0" />
+                    <item.icon className="text-purple-400 w-5 h-5 shrink-0" />
                     <span className="font-medium">{item.text}</span>
                   </motion.li>
                 ))}

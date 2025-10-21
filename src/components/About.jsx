@@ -57,7 +57,7 @@ const About = () => {
           >
             Turning Ideas Into Reality
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-brand-purple to-brand-blue mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-linear-to-r from-brand-purple to-brand-blue mx-auto rounded-full" />
         </motion.div>
 
         {/* Content Grid */}
@@ -75,7 +75,7 @@ const About = () => {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              className="relative aspect-square bg-gradient-to-br from-brand-purple/20 to-brand-blue/20 rounded-3xl overflow-hidden border border-brand-purple/30 shadow-2xl"
+              className="relative aspect-square bg-linear-to-br from-brand-purple/20 to-brand-blue/20 rounded-3xl overflow-hidden border border-brand-purple/30 shadow-2xl"
               style={{ willChange: 'transform' }}
             >
               <img 
@@ -96,7 +96,7 @@ const About = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
-              className="absolute -bottom-6 -right-6 bg-gradient-to-r from-brand-purple to-brand-blue p-6 rounded-2xl shadow-2xl"
+              className="absolute -bottom-6 -right-6 bg-linear-to-r from-brand-purple to-brand-blue p-6 rounded-2xl shadow-2xl"
             >
               <div className="text-center">
                 <p className="text-3xl font-bold">3+</p>
@@ -114,7 +114,7 @@ const About = () => {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-linear-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
                 Crafting Digital Experiences
               </h3>
               <p className="text-gray-300 leading-relaxed text-lg">
@@ -167,7 +167,7 @@ const About = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-8 px-8 py-3 bg-gradient-to-r from-brand-purple to-brand-blue text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transition-shadow"
+              className="mt-8 px-8 py-3 bg-linear-to-r from-brand-purple to-brand-blue text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transition-shadow"
               style={{ willChange: 'transform' }}
             >
               Learn More About Us
@@ -186,7 +186,7 @@ const About = () => {
           <motion.div className="relative perspective-1000">
             {/* Subtle Glow Border - OPTIMIZED with CSS animation */}
             <div
-              className="absolute -inset-[2px] bg-gradient-to-r from-brand-purple via-brand-blue to-brand-purple rounded-3xl opacity-70"
+              className="absolute -inset-[2px] bg-linear-to-r from-brand-purple via-brand-blue to-brand-purple rounded-3xl opacity-70"
               style={{
                 filter: 'blur(8px)',
                 animation: 'glow-pulse 4s ease-in-out infinite',
@@ -195,14 +195,14 @@ const About = () => {
             />
 
             {/* Photo Card */}
-            <motion.div
+              <motion.div
               whileHover={{
                 scale: 1.03,
                 rotateY: 4,
                 rotateX: 4,
               }}
               transition={{ duration: 0.3 }}
-              className="relative bg-gradient-to-br from-gray-900 to-black p-4 md:p-6 rounded-3xl shadow-xl"
+              className="relative bg-linear-to-br from-gray-900 to-black p-4 md:p-6 rounded-3xl shadow-xl"
               style={{
                 transformStyle: "preserve-3d",
                 willChange: 'transform',
@@ -223,7 +223,7 @@ const About = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-gradient-to-t from-brand-purple/40 to-transparent rounded-2xl transition-opacity"
+                  className="absolute inset-0 bg-linear-to-t from-brand-purple/40 to-transparent rounded-2xl transition-opacity"
                 />
               </div>
 
@@ -235,7 +235,7 @@ const About = () => {
                 transition={{ delay: 0.4 }}
                 className="mt-4 text-center"
               >
-                <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
+                <h3 className="text-xl md:text-2xl font-bold bg-linear-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
                   Samuel Oluwayomi
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base">

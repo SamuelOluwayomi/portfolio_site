@@ -68,7 +68,7 @@ const WhyMe = () => {
       
       <section 
         id="why me" 
-        className="relative bg-gradient-to-b from-[#0A0A14] via-[#1A1A2E] to-[#0A0A14] text-white py-32 px-6 md:px-16 overflow-hidden rounded-b-[100px] md:rounded-b-[150px] z-10 shadow-[0_40px_80px_-20px_rgba(139,125,216,0.4)]"
+        className="relative bg-linear-to-b from-[#0A0A14] via-[#1A1A2E] to-[#0A0A14] text-white py-32 px-6 md:px-16 overflow-hidden rounded-b-[100px] md:rounded-b-[150px] z-10 shadow-[0_40px_80px_-20px_rgba(139,125,216,0.4)]"
       >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-20">
@@ -112,7 +112,7 @@ const WhyMe = () => {
             transition={{ duration: 0.5, type: "spring" }}
             className="inline-block mb-4"
           >
-            <span className="text-sm md:text-base font-semibold px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full">
+            <span className="text-sm md:text-base font-semibold px-4 py-2 bg-linear-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full">
               ✨ What Sets Me Apart
             </span>
           </motion.div>
@@ -126,7 +126,7 @@ const WhyMe = () => {
             style={{ fontFamily: "'Righteous', cursive" }}
           >
             Why Choose{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
               Me?
             </span>
           </motion.h2>
@@ -146,7 +146,7 @@ const WhyMe = () => {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-32 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto mt-8 rounded-full"
+            className="w-32 h-1 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto mt-8 rounded-full"
           />
         </motion.div>
 
@@ -173,7 +173,7 @@ const WhyMe = () => {
             >
               {/* Card Glow Effect - OPTIMIZED */}
               <div
-                className={`absolute -inset-0.5 bg-gradient-to-r ${reason.color} rounded-2xl opacity-0 group-hover:opacity-75 transition-opacity duration-500`}
+                className={`absolute -inset-0.5 bg-linear-to-r ${reason.color} rounded-2xl opacity-0 group-hover:opacity-75 transition-opacity duration-500`}
                 style={{ filter: 'blur(8px)' }}
               />
 
@@ -189,13 +189,13 @@ const WhyMe = () => {
                   >
                     {reason.icon}
                   </motion.div>
-                  <span className={`text-6xl font-bold bg-gradient-to-br ${reason.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}>
+                  <span className={`text-6xl font-bold bg-linear-to-br ${reason.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}>
                     {reason.number}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold mb-4 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 group-hover:bg-linear-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                   {reason.title}
                 </h3>
 
@@ -232,7 +232,7 @@ const WhyMe = () => {
             >
               {/* Animated Background */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
+                className="absolute inset-0 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500"
                 variants={{
                   hover: {
                     scale: 1.5,
@@ -280,11 +280,11 @@ const WhyMe = () => {
                 type: "spring"
               }}
               whileHover={{ scale: 1.1 }}
-              className="text-center p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all"
+              className="text-center p-6 bg-linear-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all"
               style={{ willChange: 'transform' }}
             >
               <motion.div
-                className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2"
+                className="text-3xl md:text-4xl font-bold bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
