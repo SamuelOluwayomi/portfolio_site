@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import { Icon } from "lucide-react";
+import { FaReact, FaPython, FaNodeJs, FaGitAlt, FaFigma } from "react-icons/fa";
+import { SiDjango, SiTailwindcss, SiPostgresql, SiFramer, SiFastapi } from "react-icons/si";
+
 
 const WhyMe = () => {
  const reasons = [
@@ -51,6 +55,23 @@ const WhyMe = () => {
     color: "from-violet-500 to-fuchsia-500",
   },
 ];
+
+// Tech Stack
+const techStack = [
+  { name: "React", icon: FaReact, color: "text-blue-400" },
+  { name: "Django", icon: SiDjango, color: "text-green-500" },
+  { name: "Python", icon: FaPython, color: "text-yellow-400" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
+  { name: "REST API", icon: SiFastapi, color: "text-purple-400" },
+  { name: "Figma", icon: FaFigma, color: "text-pink-400" },
+  { name: "Framer Motion", icon: SiFramer, color: "text-violet-400" },
+  { name: "Node.js", icon: FaNodeJs, color: "text-green-400" },
+  { name: "Git", icon: FaGitAlt, color: "text-orange-400" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-500" },
+];
+
+// Duplicate for infinite scroll effect
+const duplicatedStack = [...techStack, ...techStack];
 
   return (
     <div className="relative">
@@ -148,6 +169,61 @@ const WhyMe = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="w-32 h-1 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto mt-8 rounded-full"
           />
+        </motion.div>
+
+        {/* Tech Stack Infinite Scroll */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 overflow-hidden"
+        >
+          <h3 className="text-center text-xl md:text-2xl font-bold mb-8 text-gray-300">
+            Technologies I Work With
+          </h3>
+          
+          {/* Scrolling container */}
+          <div className="relative">
+            {/* Gradient fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-[#0A0A14] to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-[#0A0A14] to-transparent z-10" />
+            
+            <div className="flex gap-6 overflow-hidden">
+              <motion.div
+                className="flex gap-6 shrink-0"
+                animate={{
+                  x: [0, -100 * techStack.length],
+                }}
+                transition={{
+                  x: {
+                    duration: 30,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                }}
+                style={{ willChange: 'transform' }}
+              >
+                {duplicatedStack.map((tech, index) => {
+                  const Icon = tech.icon;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.1 }}
+                      className="flex flex-col items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 min-w-[140px] hover:border-purple-500/50 transition-all"
+                      style={{ willChange: 'transform' }}
+                    >
+                      <Icon className={`text-5xl ${tech.color}`} /> 
+                      <span className={`text-sm font-semibold ${tech.color}`}>
+                        {tech.name}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Reasons Grid */}
@@ -298,32 +374,6 @@ const WhyMe = () => {
         </div>
       </div>
 
-      {/* CSS Animations */}
-      <style>{`
-        @keyframes orb-float-1 {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(50px, 30px) scale(1.1);
-          }
-          66% {
-            transform: translate(-30px, 50px) scale(1.05);
-          }
-        }
-
-        @keyframes orb-float-2 {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(-50px, -30px) scale(1.2);
-          }
-          66% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-        }
-      `}</style>
     </section>
     </div>
   );
