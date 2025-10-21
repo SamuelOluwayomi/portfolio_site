@@ -1,0 +1,19 @@
+{
+  "name": "Samuel Oluwayomi | Portfolio",
+  "short_name": "Portfolio",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "purple-500/10",
+  "background_color": "blue-500/10",
+  "display": "standalone"
+}

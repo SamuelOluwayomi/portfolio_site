@@ -263,7 +263,7 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
+                    transition={{ delay: 0.1 + i * 0.1, duration: 0.4 }}
                     whileHover={{ scale: 1.05, y: -5 }}
                     className={`px-5 py-2.5 rounded-full bg-linear-to-r ${item.color} text-white font-semibold text-sm shadow-lg cursor-pointer`}
                     style={{ willChange: 'transform' }}
@@ -324,7 +324,7 @@ const Hero = () => {
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.7 + i * 0.1 }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-3 text-gray-200"
                     style={{ willChange: 'transform' }}
