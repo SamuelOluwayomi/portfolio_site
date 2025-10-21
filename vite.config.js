@@ -18,7 +18,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'framer-m': ['framer-m'],
+          'framer-motion': ['framer-motion'],
           'lucide': ['lucide-react']
         }
       }
