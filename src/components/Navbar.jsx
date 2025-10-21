@@ -1,19 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/default.svg';
 import { Code2, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null);
 
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setIsOpen(false);
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
   
   return (
     <motion.nav 
+      ref={navRef}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -114,7 +133,7 @@ const Navbar = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative group left-8 bg-linear-to-r from-purple-600 to-blue-600 text-white px-5 py-2.5 rounded-full font-medium text-sm shadow-lg overflow-hidden"
+            className="relative group bg-linear-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-full left-8 font-medium text-sm shadow-lg overflow-hidden"
             style={{ willChange: 'transform' }}
           >
             <span className="relative z-10">Contact me</span>
