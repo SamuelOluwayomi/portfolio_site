@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar'
 import { lazy, Suspense } from 'react';
 import { Loader } from "lucide-react";
+import Projects from "./components/Projects";
 
 const Hero = lazy(() => import('./components/Hero'));
 const About = lazy(() => import('./components/About'));
@@ -25,6 +26,7 @@ function App() {
       <Hero />
       <About />
       <Whyme />
+      <Projects />
       </Suspense>
     </div>
   )
